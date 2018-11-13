@@ -11,7 +11,6 @@ ssh -i $1 -oStrictHostKeyChecking=no ec2-user@$2 -y << ENDSSH
   npm install
   sudo echo "export PORT=3000" >> ~/.bashrc
   sudo echo "export API_KEY=bWVsdmlucm9kcmlndWV6cm9kcmlndWV6Cg==" >> ~/.bashrc
-  sudo source ~/.bashrc
   cd ~/api
   sudo pm2 start index.js
   sudo pm2 startup

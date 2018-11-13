@@ -1,2 +1,2 @@
 #!/bin/bash
-aws ec2 describe-instances --region $3 --profile $4 --query 'Reservations[*].Instances[*].[InstanceId, PublicIpAddress, State.Name, Tags[?Key==`Name`].Value]' | node ./scripts/cli.js $(cat) $(echo $1) $(echo $2)
+aws ec2 describe-instances --region $3 --profile $4 --query 'Reservations[*].Instances[*].[InstanceId, PublicIpAddress, State.Name, Tags[?Key==`Name`].Value]' | python ./scripts/cli.py $(cat) $(echo $1) $(echo $2)
