@@ -6,17 +6,17 @@ import os
 args = sys.argv
 args.append(args.pop(0))
 args.pop()
-pemPath = args.pop()
+pem_path = args.pop()
 instance_tag = args.pop()
 
 def deploy(ip):
   print('Deploying to: {}'.format(ip))
   script_path = '{}{}'.format(os.getcwd(), '/scripts/ssh.sh')
-  command = '{} {} {}'.format(script_path, pemPath, ip)
+  command = '{} {} {}'.format(script_path, pem_path, ip)
   output = subprocess.check_output(command, shell=True)
   print(output)
 
-def fetchIpAddresses(args):
+def fetch_ip_addresses(args):
   json_string = ''.join(args)
   json_obj = json.loads(json_string)
   instances_array = list(map(lambda x: flatten(x[0]), json_obj))
@@ -30,4 +30,4 @@ def fetchIpAddresses(args):
 def flatten(nested_list):
   return eval('['+str(nested_list).replace('[','').replace(']','')+']')
 
-fetchIpAddresses(args)
+fetch_ip_addresses(args)
